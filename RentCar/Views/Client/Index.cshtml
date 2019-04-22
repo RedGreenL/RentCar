@@ -1,0 +1,67 @@
+﻿@model PagedList.IPagedList<RentCar.Models.Client>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Add new client", "Create", null, null, new { @class = "btn btn-md btn-primary" })
+</p>
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                Client
+            </th>
+
+             <th>
+            Email
+            </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            IDNP
+        </th> 
+            <th>
+            City
+        </th>
+        <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Idnp)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Addres.City.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.Client_ID}) |
+                @Html.ActionLink("Details", "Details", new {id = item.Client_ID}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.Client_ID})
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

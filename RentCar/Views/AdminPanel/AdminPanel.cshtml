@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model IEnumerable<RentCar.Models.Rents>
+@using RentCar.Models
+
+<div class="row">
+    <div class="col-sm-4 text-center colum-grafics">
+        <h5>The most rented car</h5>
+        <h2>@ViewBag.Top1Car.Brand</h2>
+        <h2>@ViewBag.Top1Car.Model</h2>
+    </div>
+    <div class="col-sm-4 text-center colum-grafics">
+        <h5>Number of rents for last month</h5>
+        <h1>@ViewBag.RentsLastMonth</h1>
+
+    </div>
+
+    <div class="col-sm-4 text-center colum-grafics">
+        <h5>Money for last month</h5>
+        <h1>&euro; @ViewBag.MoneyLastMonth</h1>
+    </div>
+
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead class="bg-primary">
+                    <tr>
+                        <h1 class="text-center">The most productives cars</h1>
+
+                        <th>
+                            Brand
+                        </th>
+                        <th>
+                            Series
+                        </th>
+                        <th>
+                            Color
+                        </th>
+                        <th>
+                            Gear
+                        </th>
+                        <th>
+                            Fuel
+                        </th>
+                        <th>
+                            Price pe day
+                        </th>
+                        <th>
+                            Total Price
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Car.Brand </td>
+                    <td>@item.Car.Model</td>
+                    <td>@item.Car.Color</td>
+                    <td>@item.Car.GearType.Name</td>
+                    <td>@item.Car.FuelType.Name</td>
+                    <td> &euro; @item.Car.Price</td>
+                    <td> <b>&euro; @item.Price</b></td>
+
+                </tr>
+
+
+                }
+            </table>
+        </div>
+</div>

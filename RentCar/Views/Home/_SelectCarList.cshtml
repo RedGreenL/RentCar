@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RentCar.Models.Car>
+@using System.Activities.Statements;
+@using RentCar.Models
+
+@{
+    /**/
+
+    if (Model != null)
+    {
+
+        foreach (var item in Model)
+        {
+            var img = item.Images.FirstOrDefault();
+
+            <div class="col-sm-4 col-lg-4 row-bg1 text-center">
+                <img src="~/Img/@img.Path" class="MainCarImage"/>
+                <h4 class="NameCarMain">@item.Brand @item.Model</h4>
+                <h4 class="PriceCarMain">@item.Price EURO PENTRU O ZI</h4>
+                @Html.ActionLink("Rent", "Create", "Rents",
+                    new {id = item.Car_ID}, new {@class = "btn btn-danger btn-md btn-block  center-block"})
+                @Html.ActionLink("Details", "Details", "Car",
+                    new {id = item.Car_ID}, new {@class = "btn btn-success btn-md btn-block  center-block"})
+
+            </div>
+                            
+                       }
+                }
+}
+
+
+

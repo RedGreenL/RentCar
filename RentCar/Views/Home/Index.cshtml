@@ -1,0 +1,70 @@
+﻿@using System.Activities.Statements;
+@model IEnumerable<RentCar.Models.Car>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<style>
+    body {
+        padding-top: 30px;
+    }
+</style>
+<div class="jumbotron text-center bghead">
+</div>
+
+<div class="container-fluid SelectSearchBar">
+    <div class="row">
+        <div class="col-sm-4 col-lg-4 center-block">
+            @Html.DropDownList("Gear", new SelectList(ViewBag.Gear, "GearType_ID", "Name"), "Select gear", new { @class = "form-control", onchange = "redirect(this.value, 0, 0)" })
+        </div>
+        <div class="col-sm-4">
+            @Html.DropDownList("Category", new SelectList(ViewBag.Category, "Category_id", "Name"), "Select category", new { @class = "form-control", onchange = "redirect( 0, this.value, 0)" })
+        </div>
+        <div class="col-sm-4">
+            @Html.DropDownList("Type of fuel", new SelectList(ViewBag.Fuel, "FuelType_id", "Name"), "Select fuel", new { @class = "form-control", onchange = "redirect(0, 0, this.value)" })
+        </div>
+    </div>
+</div>
+
+<div class="row" id="selectCarList">
+    @Html.Partial("_SelectCarList", Model)
+</div>
+
+<div class="container-fluid indexInfo">
+    <div class="row">
+        <div class="col-sm-3">
+            <i class="material-icons" style="font-size: 70px">map</i>
+            <h3>Results Driven</h3>
+            <p>
+                Sed ut perspiciatis unde om nis natus error sit volup atem accusant dolorem que laudantium.
+                Totam aperiam, eaque ipsa quae ai.
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <i class="material-icons" style="font-size: 70px">map</i>
+            <h3>Proven Technology</h3>
+            <p>
+                Sed ut perspiciatis unde om nis natus error sit volup atem accusant dolorem que laudantium.
+                Totam aperiam, eaque ipsa quae ai.
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <i class="material-icons" style="font-size: 70px">map</i>
+            <h3>Winning Culture</h3>
+            <p>Sed ut perspiciatis unde om nis natus error sit volup atem accusant dolorem que laudantium.
+                Totam aperiam, eaque ipsa quae ai.</p>
+        </div>
+        <div class="col-sm-3">
+            <i class="material-icons" style="font-size: 70px">map</i>
+            <h3>Top Performance</h3>
+            <p>
+                Sed ut perspiciatis unde om nis natus error sit volup atem accusant dolorem que laudantium.
+                Totam aperiam, eaque ipsa quae ai.
+            </p>
+        </div>
+    </div>
+</div>
+
+

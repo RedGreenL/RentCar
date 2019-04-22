@@ -1,0 +1,63 @@
+﻿@model RentCar.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<div class="container-fuild" id="DetailsCar">
+    <div class="SpecificationsCar">
+        <h2>
+            @Html.DisplayFor(model => model.Brand)
+            @Html.DisplayFor(model => model.Model)
+        </h2>
+        <h4>
+            @Html.DisplayNameFor(model => model.Category.Name)
+            @Html.DisplayFor(model => model.Category.Name)
+        </h4>
+        <h4>
+            @Html.DisplayNameFor(model => model.FuelType.Name)
+            @Html.DisplayFor(model => model.FuelType.Name)
+        </h4>
+        <h4>
+            @Html.DisplayNameFor(model => model.GearType.Name)
+            @Html.DisplayFor(model => model.GearType.Name)
+        </h4>
+        <h4>
+            @Html.DisplayNameFor(model => model.Year):
+            @Html.DisplayFor(model => model.Year)
+        </h4>
+        <h4>
+            @Html.DisplayNameFor(model => model.Color):
+            @Html.DisplayFor(model => model.Color)
+        </h4>
+        <h4>
+            @Html.DisplayNameFor(model => model.Engine):
+            @Html.DisplayFor(model => model.Engine) cm2
+        </h4>
+        <h4>
+            @Html.DisplayNameFor(model => model.Price):
+            @Html.DisplayFor(model => model.Price) euro
+        </h4>
+        @Html.ActionLink("Rent", "Create", "Rents",
+            new {id = Model.Car_ID}, new {@class = "btn btn-danger btn-md btn-block  center-block"})
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Edit", "Edit", "CarCRUD",
+                    new {id = Model.Car_ID}, new {@class = "btn btn-warning btn-md btn-block  center-block" })
+            }
+        }
+    </div>
+</div>
+    
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<script>$(document).ready(function () {
+console.log("MDA");
+$("#DetailsCar").css("background-image", "url('/Img/@Model.Images.FirstOrDefault().Path')");
+
+});</script>

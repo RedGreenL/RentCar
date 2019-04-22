@@ -1,0 +1,156 @@
+﻿@model RentCar.Models.RetnsViewModels
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row details">
+    <hr />
+    <div class="col-sm-6 ">
+        <h2 >Information client</h2>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Surname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.District)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.District)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.City)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Street)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Street)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Flat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Flat)
+            </dd>
+        </dl>
+
+    </div>
+    <div class="col-sm-6">
+        <h2>Information rent</h2>
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Brand)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Brand)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Model)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Model)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Engine)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Engine)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Color)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Color)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Driver)
+            </dt>
+
+            <dd>
+                @(Model.Driver?"Yes":"No")
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StartData)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StartData)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EndData)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EndData)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+               &euro; @Html.DisplayFor(model => model.Price)
+            </dd>
+
+
+        </dl>
+    </div>  
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Rent_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

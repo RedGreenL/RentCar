@@ -1,0 +1,40 @@
+﻿@model IEnumerable<RentCar.Models.Discount>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Add new discount", "Create", null, null, new { @class = "btn btn-md btn-primary" })
+</p>
+<table class="table table-striped">
+    <thead class="bg-primary">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Days)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Percent) &percnt
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Days)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percent)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Discount_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Discount_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Discount_ID })
+                </td>
+            </tr>
+        }
+
+</table>

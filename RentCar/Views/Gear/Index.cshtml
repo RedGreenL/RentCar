@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RentCar.Models.GearType>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Add new type of gear", "Create", null, null, new { @class = "btn btn-md btn-primary" })
+</p>
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.GearType_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.GearType_ID })
+            </td>
+        </tr>
+    }
+
+</table>

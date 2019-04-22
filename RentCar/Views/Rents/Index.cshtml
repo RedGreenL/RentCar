@@ -1,0 +1,81 @@
+﻿@model PagedList.IPagedList<RentCar.Models.Rents>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("New order", "Create", "Rents", null, new { @class = "btn btn-md btn-primary" })
+</p>
+
+@using (Html.BeginForm("Index", "Rents", FormMethod.Post))
+{
+    <div class="form-group row">
+        <div class="col-sm-2">
+            @Html.TextBox("searchPhone", null, new { @class = "form-control ", placeholder = "Phone number" })
+            <input type="submit" value="Find" class="btn btn-success" />
+        </div>
+    </div>
+
+}
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                Client Name
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Car
+            </th>
+            <th>
+                Start Data
+            </th>
+            <th>
+                End Data
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Name)
+                @Html.DisplayFor(modelItem => item.Client.Surname)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Phone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.Brand)
+                @Html.DisplayFor(modelItem => item.Car.Model)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndData)
+            </td>
+            <td>
+                &euro; @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Rent_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Rent_ID })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

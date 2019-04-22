@@ -1,0 +1,160 @@
+﻿@using RentCar.Models
+@model RentCar.Models.RetnsViewModels
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js") 
+
+<h3 class="text-center">Rent your favourite car</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+            </div>
+
+            <div class="col-sm-5">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control text-center", placeholder = "First Name" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-4">
+                            @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control text-center", placeholder = "Surname" } })
+                            @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control text-center", placeholder = "E-mail address" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.EditorFor(model => model.Idnp, new { htmlAttributes = new { @class = "form-control text-center", placeholder = "Identity number" } })
+                            @Html.ValidationMessageFor(model => model.Idnp, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control text-center", placeholder = "Phone number" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            @Html.DropDownListFor(m => m.District_ID, new SelectList(ViewBag.District, "District_iD", "Name"), "Select district", new { @class = "form-control text-center", onchange = "DropDownCities2()", id = "DropDownDistrict" })
+                            @Html.ValidationMessageFor(model => model.District_ID, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-sm-4"><select name="cityDropDown" class="form-control" id="cityDropDown"></select></div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control text-center", placeholder = "Street name" } })
+                            @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-4">
+                            @Html.EditorFor(model => model.Flat, new { htmlAttributes = new { @class = "form-control text-center", placeholder = "Flat number" } })
+                            @Html.ValidationMessageFor(model => model.Flat, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+
+                <div class="form-horizontal">
+                    <hr />
+                    <div class="form-group">
+                        @Html.DropDownListFor(m => m.Car_ID,
+                            new SelectList(ViewBag.Car, "Car_ID", "Brand", ViewBag.CurentCar.Car_ID),
+                            "Change Car",
+                            new {@class = "form-control", @placeholder = "Category"})
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartData, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.StartData, new { htmlAttributes = new { @class = "form-control", type = "date", id="startData" } })
+                        @Html.ValidationMessageFor(model => model.StartData, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EndData, htmlAttributes: new { @class = "control-label col-md-2" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.EditorFor(model => model.EndData, new { htmlAttributes = new { @class = "form-control", type = "date", id="endData",  onchange="CalculatePrice()" } })
+                        @Html.ValidationMessageFor(model => model.EndData, "", new { @class = "text-danger" })
+                    </div>                    
+                    <div class="form-group">
+                        @Html.CheckBoxFor(m => m.Driver, new {@style="height: 17px" })
+                        <label>Include driver</label>
+                    </div>
+                    <div class="PriceCarMain">
+                        <h3 id="priceCalc">Total price: @ViewBag.CurentCar.Price &euro;</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-offset-4">
+            <div class="col-sm-2">
+                <input type="submit" value="Send Order" class="btn btn-success btn-lg btn-block"/>
+            </div>
+            <div class="col-sm-2">
+                @Html.ActionLink("I am a old user", "OldUser", "Rents", new {carId = ViewBag.CurentCar.Car_ID}, new {@class = "btn btn-danger btn-lg"})
+
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    function CalculatePrice() {
+        var startData = $("#startData").val();
+        var endData = $("#endData").val();
+        var curentPrice = @(ViewBag.CurentCar.Price);
+        debugger 
+        $.ajax({
+            url: '/Rents/TotalPriceRent',
+            type: 'POST',
+            data:
+            {
+                startDate: startData,
+                endDate: endData,
+                price: curentPrice
+            }
+            ,
+            success: function (result) {
+                console.log("MDa");
+                $("#priceCalc").html("Total price: " + result+" &euro; ");
+            },
+            error: function (err) {
+                alert("error " + err.toString() + err.message);
+            }
+        });
+    }
+
+</script>

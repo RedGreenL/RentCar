@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<RentCar.ViewModels.ShopViewModels>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body{margin-top: 60px;}
+</style>
+
+@{
+    if (Session["FreshOrder"] == null)
+    {
+        <h3 class="bg-warning text-center">@ViewBag.noRents</h3> 
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    Car
+                </th>
+                <th>
+                    Start Data
+                </th>
+                <th>
+                    End Data
+                </th>
+                <th>
+                    Price
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                        @Html.DisplayFor(modelItem => item.Model)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartData)
+                    </td>        
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndData)
+                    </td>        
+                    <td>
+                        &euro; @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Cancel order", "Delete", new {id = item.RentID, @class= "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+}

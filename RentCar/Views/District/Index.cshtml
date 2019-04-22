@@ -1,0 +1,35 @@
+﻿@model PagedList.IPagedList<RentCar.Models.District>
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Add new district", "Create", null, null, new { @class = "btn btn-md btn-primary" })
+</p>
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                District
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.District_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.District_ID })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

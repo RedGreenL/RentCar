@@ -1,0 +1,210 @@
+﻿body {
+    padding-bottom: 20px;
+    width: 100%;
+    padding-top: 60px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: 'Kanit';
+    padding-top: 25px;
+}
+
+.navbar-default .navbar-nav > li > a:hover
+{
+    color: white;
+    background-color: #c5081b;
+}
+
+.details
+{
+    font-size: 20px;
+    font-family: "Kanit";
+}
+.navbar-default {
+    /*background-image: url("Img/header_v2.jpg");*/
+    background-color: #2d2d2d;
+    float: left;
+    height: 60px;
+    box-shadow: 0px 0px 4px #000000;
+    border: 0;
+}
+.navbar-brand
+{
+    font-family: 'Kanit';
+    font-size: 40px;
+}
+.shop-emblem
+{
+    padding-top: 20px;
+    font-size: 30px;
+}
+.jumbotron {
+    background-image: url("Img/img-header.jpg");
+    height: 500px;
+    margin: 0;
+    padding: 0;
+}
+#DetailsCar {
+    background-image: url("Img/img-header.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 700px;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 0px 6px #000000;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.shop-cart
+{
+    font-size: 36px;
+}
+
+.btn {
+    border-radius: 3px;
+    font-family: 'Kanit';
+}
+
+.col-sm-3 {
+    padding: 5px;
+    text-align: center;
+}
+
+.SpecificationsCar {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5%;
+    font-family: 'Kanit';
+    color: white;
+    width: 400px;
+}
+
+.SpecificationsCar h2
+{
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1px;
+    color: #E86F5D;
+    text-align: center;
+}
+
+.SpecificationsCar h4
+{
+   padding: 5px 10px;
+   border-left: 4px solid #E86F5D;
+   text-shadow: 0px 0px 3px black;
+}
+
+.orderClient
+{
+    padding-top: 5%;
+}
+
+.orderCar {
+    padding-top: 5%;
+}
+
+
+.SelectSearchBar {
+    padding-top: 17px;
+    padding-bottom: 17px;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ececec;
+    border-top: 2px solid #ececec;
+}
+.NameCarMain {
+    background-color: rgba(149, 206, 255, 0.3);
+    color: #555555;
+    padding: 5px;
+    margin-top: 2px;
+    font-family: 'Kanit';
+}
+
+.indexInfo
+{
+    background-color: #e5e5e5;
+    font-family: 'Kanit';
+
+}
+.container-fluid
+{
+    margin-top: 13px;
+}
+.MainButton {
+    width: 120px;
+    border-radius: 0;
+    font-family: 'Kanit';
+}
+.PriceCarMain {
+    color: #FC4A1A;
+    padding: 3px;
+    font-family: 'Kanit';
+    font-weight: bold;
+}
+
+.MainCarImage {
+
+    width: 360px;
+    height: 245px;
+    margin-top: 13px;
+}
+
+.CarouselCarImage {
+    max-width: 100%;
+    max-height: 450px;
+}
+
+.row-bg2
+{
+    background-color:lavenderblush;
+}
+
+/*DETALII DESPRE EXPERIENTA*/
+.counter {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color:#f5f5f5;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.count-number {
+    font-size: 35px;
+    font-family: 'Rubik Mono One';
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.count-text {
+    font-size: 15px;
+    font-family: 'Kanit';
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.bg-1 { 
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+.bg-2 { 
+    background-color: #474e5d;
+    color: #ffffff;
+}
+.bg-3 { 
+    background-color: #ffffff;
+    color: #555555;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}

@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rubik Mono One' rel='stylesheet'>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link href="@Url.Content("~/Content/AdminPanel.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/RentCar.js")"></script>
+    @using Microsoft.AspNet.Identity
+
+</head>
+<body>
+    
+    <div class="sidebar">
+        <div class="Admin-logo">
+            <h5>@Html.DisplayName(User.Identity.GetUserName())</h5>
+        </div>
+        @Html.ActionLink("Statistcs", "AdminPanel", "AdminPanel", null, null)
+        @Html.ActionLink("CAR", "Index", "Car", null, null)
+        @Html.ActionLink("CATEGORY", "Index", "Category", null, null)
+        @Html.ActionLink("FUEL", "Index", "Fuel", null, null)
+        @Html.ActionLink("GEAR", "Index", "Gear", null, null)
+        @Html.ActionLink("DISTRICT", "Index", "District", null, null)
+        @Html.ActionLink("CITY", "Index", "City", null, null)
+        @Html.ActionLink("CLIENT", "Index", "Client", null, null)
+        @Html.ActionLink("ORDER", "Index", "Rents", null, null)
+        @Html.ActionLink("DISCOUNT", "Index", "Discount", null, null)
+        @Html.ActionLink("ROLE", "Index", "Role", null, null)
+        @Html.ActionLink("USER", "Index", "User", null, null)
+    </div>
+
+<div class="content">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+    </div>
+    @RenderBody()
+</div>
+
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
